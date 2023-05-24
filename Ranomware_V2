@@ -40,7 +40,7 @@ for file_path in file_paths:
     
 public_key = rsa.PublicKey.load_pkcs1(public_key_pem.encode())
 
-with open('fern_key', 'rb') as f:
+with open('fernet_key', 'rb') as f:
     data = f.read()
 
 
