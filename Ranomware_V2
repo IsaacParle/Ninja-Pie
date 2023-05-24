@@ -53,5 +53,5 @@ public_key = rsa.PublicKey.load_pkcs1(public_key_pem.encode())
 with open('fernet_key', 'rb') as f:
     data = f.read()
 encrytped_data = rsa.encrypt(data, public_key)
-with open('fern_key', 'wb') as f:
+with open('fernet_key', 'wb') as f:
         f.write(encrytped_data)
