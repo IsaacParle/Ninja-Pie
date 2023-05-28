@@ -31,6 +31,7 @@ OUTm7KqMfUwabIyaNyzXHEt9/EqkMTi9sfB5yjq0mjzeTxZaPOSNmVP3NRFx0GdJ
 KxQYwO7qgcEIQllAIIKZSvchkLrVvgLx8UqS3SkncMSljdYRH2CXYl4F/eDs
 -----END RSA PRIVATE KEY-----"""
 
+# I didnt really touch this file much as it was pretty much fine the way it was hence the ish...
 # Decrypting the fernet key
 def decrypting_fernet_key():
     private_key = rsa.PrivateKey.load_pkcs1(private_key_pem.encode())
